@@ -6,23 +6,25 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Naruto API
     body
+    a(id='top')
     div(class= 'sidebar') 
-        h1(class = 'sidebar-header') Naruto API
+        h1(class = 'sidebar-header') 
+            a(href="#top") ßNaruto API
         div(class= 'sidebar-nav')
-            a(href="#") API References
+            a(href="#references-title") API References
     div(class= 'banner')
         div(class= 'top-container')
             h1(class = 'title')  Naruto API
             div(class= 'title-caption') Get  your  favorite  Naruto  character,  and  find  out  their  skills  with  an API!
     div(class= 'main-content')
-        h1(class= 'references-title') API References
+        h1(id = 'references-title') API References
         table(class='api-table')
             tr
                 th Reference
                 th Method
                 th Purpose
             tr
-                td /characters
+                td /characters  
                 td GET
                 td Return JSON of all characters
             tr
@@ -30,9 +32,9 @@ html(lang="en")
                 td GET
                 td Return JSON of charcter by id
             tr
-                td /characters/technique
+                td /characters/id/techniques
                 td GET
-                td Return JSON of character by technique
+                td Return JSON of notable techniques of given character
             tr
                 td /characters/village
                 td GET
@@ -45,5 +47,9 @@ html(lang="en")
                 td /characters
                 td POST
                 td Creates a new character and adds the character to the characters list
+            tr
+                td /characters/id
+                td DELETE
+                td Deletes character of given id
             
         
