@@ -2,14 +2,7 @@ Create DATABASE naruto;
 
 USE naruto;
 
-CREATE TABLE narutoCharacters (
-    id INT auto_increment,
-    name VARCHAR(255),
-    createdAt DATETIME DEFAULT NOW(),
-    updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
-    deletedAt DATETIME,
-    PRIMARY KEY(id)
-);
+
 
 CREATE TABLE characters(
     id INT auto_increment,
@@ -49,9 +42,10 @@ CREATE TABLE techniques(
     FOREIGN KEY(characterId) REFERENCES characters(id)
 )
 
-CREATE TABLE attackPotency(
+CREATE TABLE powerStats(
     id INT auto_increment,
-    name VARCHAR(255),
+    attackPotency VARCHAR(255),
+    speed VARCHAR(255),
     characterId INT,
     createdAt DATETIME DEFAULT NOW(),
     updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
