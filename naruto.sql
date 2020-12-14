@@ -40,7 +40,7 @@ CREATE TABLE villages(
 )
 
 CREATE TABLE techniques(
-     id INT auto_increment,
+    id INT auto_increment,
     name VARCHAR(255),
     characterId INT,
     createdAt DATETIME DEFAULT NOW(),
@@ -52,8 +52,10 @@ CREATE TABLE techniques(
 CREATE TABLE attackPotency(
     id INT auto_increment,
     name VARCHAR(255),
+    characterId INT,
     createdAt DATETIME DEFAULT NOW(),
     updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
     deletedAt DATETIME,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    FOREIGN KEY(characterId) REFERENCES characters(id)
 );
