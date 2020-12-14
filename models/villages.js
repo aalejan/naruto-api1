@@ -1,4 +1,3 @@
-const Characters = require("./characters")
 
 const Villages= (connection , Sequelize) => {
     return connection.define('villages', {
