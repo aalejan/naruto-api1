@@ -23,7 +23,7 @@ Techniques.belongsTo(Characters)
 Characters.hasMany(Powerstats)
 Powerstats.belongsTo(Characters)
 
-Villages.belongsToMany(Characters, { through: CharacterVillages})
+Villages.hasMany(Characters, { through: CharacterVillages})
 Characters.belongsTo(Villages, { through: CharacterVillages })
 
 
