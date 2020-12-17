@@ -1,4 +1,4 @@
-const Techniques = (connection , Sequelize) => {
+const Techniques = (connection , Sequelize, Characters) => {
     return connection.define('techniques', {
         id: {type : Sequelize.INTEGER, auto_increment: true, primaryKey: true },
         name: { type: Sequelize.STRING },

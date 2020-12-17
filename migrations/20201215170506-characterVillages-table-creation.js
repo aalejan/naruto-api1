@@ -8,6 +8,7 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
+  
   },
 
   down: async (queryInterface, Sequelize) => {
