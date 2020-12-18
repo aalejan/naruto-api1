@@ -42,7 +42,7 @@ CREATE TABLE techniques(
     FOREIGN KEY(characterId) REFERENCES characters(id)
 )
 
-CREATE TABLE powerStats(
+CREATE TABLE powerstats(
     id INT auto_increment,
     attackPotency VARCHAR(255),
     speed VARCHAR(255),
@@ -53,3 +53,12 @@ CREATE TABLE powerStats(
     PRIMARY KEY(id),
     FOREIGN KEY(characterId) REFERENCES characters(id)
 );
+
+
+INSERT INTO villages(name) VALUES('Konohagakure (Hidden Leaf)')
+INSERT INTO villages(name) VALUES('Kirigakure (Hidden Mist)')
+INSERT INTO villages(name) VALUES('Kumogakure (Hidden Cloud)')
+INSERT INTO villages(name) VALUES('Iwagakure (Hidden Stone)')
+INSERT INTO villages(name) VALUES('Amegakure (Hidden Rain)')
+INSERT INTO villages(name) VALUES('Otogakure (Hidden Sound)')
+INSERT INTO villages(name) VALUES('Sunagakure (Hidden Sand)')
