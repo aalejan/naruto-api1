@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         id: 8,
-        name: 'Akasuchi',
+        name: 'Akatsuchi',
       },
       {
         id: 9,
@@ -63,7 +63,7 @@ module.exports = {
       },
       {
         id: 14,
-        name: 'Pain',
+        name: 'Nagato (Pain)',
       },
       {
         id: 15,
