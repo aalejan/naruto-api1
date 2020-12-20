@@ -1,3 +1,4 @@
+
 'use strict';
 
 module.exports = {
@@ -11,13 +12,6 @@ module.exports = {
     return queryInterface.createTable('villages', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
       name: { type: Sequelize.STRING },
-      characterId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'characters',
-          key: 'id'
-        }
-      },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
         type: Sequelize.DATE,

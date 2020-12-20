@@ -8,14 +8,13 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    return queryInterface.createTable('powerstats', {
+    return queryInterface.createTable('characters', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      attackPotency: { type: Sequelize.STRING },
-      speed: { type: Sequelize.STRING },
-      characterId: {
+      name: { type: Sequelize.STRING },
+      villageId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'characters',
+          model: 'villages',
           key: 'id'
         }
       },
@@ -35,6 +34,7 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    return queryInterface.dropTable('powerstats')
+    return queryInterface.dropTable('characters')
   }
 };
+

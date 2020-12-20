@@ -6,3 +6,5 @@ const Powerstats = (connection , Sequelize, Characters) => {
         characterId: { type: Sequelize.INTEGER, references: { model: Characters, key: 'id' }}      
     }, { paranoid: true })
 }
+
+module.exports = Powerstats

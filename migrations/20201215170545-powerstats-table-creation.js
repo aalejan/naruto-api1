@@ -8,9 +8,17 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    return queryInterface.createTable('characters', {
+    return queryInterface.createTable('powerstats', {
       id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      name: { type: Sequelize.STRING },
+      attackPotency: { type: Sequelize.STRING },
+      speed: { type: Sequelize.STRING },
+      characterId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'characters',
+          key: 'id'
+        }
+      },
       createdAt: { type: Sequelize.DATE, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
       updatedAt: {
         type: Sequelize.DATE,
@@ -27,6 +35,12 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    return queryInterface.dropTable('characters')
+    return queryInterface.dropTable('powerstats')
   }
 };
+
+
+
+
+
+

@@ -50,3 +50,6 @@ module.exports = {
     return queryInterface.bulkDelete('villages')
   }
 };
+
+
+
