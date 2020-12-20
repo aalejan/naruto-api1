@@ -1,13 +1,13 @@
 const models = require('../models')
 
-const getAllCharacters = async (req, res) => {
+const getAllCharacters = async (req, res, next) => {
   const characters = await models.Characters.findAll({
   })
 
   return res.send(characters)
 }
 
-const getCharcterById = async (req, res) => {
+const getCharcterById = async (req, res, next) => {
   const { id } = req.params
 
   const character = await models.Characters.findOne({
@@ -16,10 +16,12 @@ const getCharcterById = async (req, res) => {
     include: {model: models.Techniques}
   })
 
-  return res.send(character)
+  return character
+    ? res.send(character)
+    : next()
 }
 
-const getCharactersTechniques = async( req, res) => {
+const getCharactersTechniques = async( req, res, next) => {
   const { id } = req.params
 
   const character = await models.Characters.findOne({
@@ -27,8 +29,11 @@ const getCharactersTechniques = async( req, res) => {
     include: { model: models.Techniques}
   })
 
-  return res.send(character)
+  return character
+    ? res.send(character)
+    : next()
 }
+
 
 
 module.exports = {getAllCharacters, getCharcterById, getCharactersTechniques}
