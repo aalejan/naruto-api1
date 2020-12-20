@@ -34,6 +34,19 @@ const getCharactersTechniques = async( req, res, next) => {
     : next()
 }
 
+const getCharactersPowerstats = async( req, res, next) => {
+  const { id } = req.params
+
+  const character = await models.Characters.findOne({
+    where: {id},
+    include: { model: models.Powerstats}
+  })
+
+  return character
+    ? res.send(character)
+    : next()
+}
 
 
-module.exports = {getAllCharacters, getCharcterById, getCharactersTechniques}
+
+module.exports = {getAllCharacters, getCharcterById, getCharactersTechniques, getCharactersPowerstats}

@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const {getAllCharacters, getCharcterById, getCharactersTechniques} = require('./controllers/characters')
+const {getAllCharacters, getCharcterById, getCharactersTechniques, getCharactersPowerstats} = require('./controllers/characters')
 const {getCharacterVillage} = require('./controllers/villages')
 
 app.use(express.static('public'))
@@ -18,5 +18,7 @@ app.get('/characters', getAllCharacters)
 app.get('/characters/:id', getCharcterById)
 
 app.get('/characters/:id/techniques', getCharactersTechniques)
+
+app.get('/characters/:id/powerstats', getCharactersPowerstats)
 
 app.get('/villages/:id', getCharacterVillage)
