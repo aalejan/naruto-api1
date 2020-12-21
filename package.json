@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "dev:migrate": "./node_modules/.bin/env-cmd ./node_modules/.bin/sequelize db:migrate --env development --config ./config/sequelize.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha tests/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +32,7 @@
     "chai": "^4.2.0",
     "env-cmd": "^10.1.0",
     "mocha": "^8.2.1",
+    "sandbox": "^0.8.6",
     "sinon": "^9.2.2",
     "sinon-chai": "^3.5.0"
   }

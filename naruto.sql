@@ -7,9 +7,11 @@ USE naruto;
 CREATE TABLE characters(
     id INT auto_increment,
     name VARCHAR(255),
+    villageId INT,
     createdAt DATETIME DEFAULT NOW(),
     updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    FOREIGN KEY(villageId) REFERENCES villages(id)
 )
 
 CREATE TABLE charactersVillages(
