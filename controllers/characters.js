@@ -47,6 +47,21 @@ const getCharactersPowerstats = async( req, res, next) => {
     : next()
 }
 
+const saveNewCharacter = async (req, res) => {
+  const { id, name, villageId } = req.body
+
+  let newId = id
 
 
-module.exports = {getAllCharacters, getCharcterById, getCharactersTechniques, getCharactersPowerstats}
+  
+
+  const newCharacter = await models.Characters.create({ newId, name , villageId})
+
+  
+
+  return res.status(201).send(newCharacter)
+}
+
+
+
+module.exports = {getAllCharacters, getCharcterById, getCharactersTechniques, getCharactersPowerstats, saveNewCharacter} 

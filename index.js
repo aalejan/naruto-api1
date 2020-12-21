@@ -1,6 +1,7 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
-const {getAllCharacters, getCharcterById, getCharactersTechniques, getCharactersPowerstats} = require('./controllers/characters')
+const {getAllCharacters, getCharcterById, getCharactersTechniques, getCharactersPowerstats, saveNewCharacter} = require('./controllers/characters')
 const {getCharacterVillage} = require('./controllers/villages')
 
 app.use(express.static('public'))
@@ -22,3 +23,5 @@ app.get('/characters/:id/techniques', getCharactersTechniques)
 app.get('/characters/:id/powerstats', getCharactersPowerstats)
 
 app.get('/villages/:id', getCharacterVillage)
+
+app.post('/characters', bodyParser.json(),saveNewCharacter)
