@@ -14,4 +14,10 @@ const charactersList = [{
     villageId: 1
 }]
 
-module.exports = { charactersList }
+const singleCharacter = {
+    id: 1,
+    name: 'Naruto Uzumaki',
+    villageId: 1
+}
+
+module.exports = { charactersList, singleCharacter }

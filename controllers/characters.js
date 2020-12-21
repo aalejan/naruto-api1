@@ -8,20 +8,23 @@ const getAllCharacters = async (req, res, next) => {
 }
 
 const getCharcterById = async (req, res, next) => {
+  try {
   const { id } = req.params
 
   const character = await models.Characters.findOne({
-    where: { id },
-    include: {model: models.Powerstats},
-    include: {model: models.Techniques}
+    where: { id }
   })
 
   return character
     ? res.send(character)
     : next()
+  }catch (error){
+    return res.status(500).send('unable to retrieve character, please try again')
+  }
 }
 
 const getCharactersTechniques = async( req, res, next) => {
+ try{
   const { id } = req.params
 
   const character = await models.Characters.findOne({
@@ -32,6 +35,11 @@ const getCharactersTechniques = async( req, res, next) => {
   return character
     ? res.send(character)
     : next()
+  } catch (error){
+    return res.status(500).send('unable to retrieve character, please try again')
+  }
+
+  
 }
 
 const getCharactersPowerstats = async( req, res, next) => {
