@@ -4,11 +4,11 @@ const { createSandbox } = require('sinon')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 const models = require('../models')
-const { charactersList, singleCharacter } = require('./mocks/characters')
+const { charactersList, singleCharacter, singleCharacterTechnique } = require('./mocks/characters')
 const {
     describe, it, before, afterEach, beforeEach, after
   } = require('mocha')
-const { getAllCharacters, getCharcterById } = require('../controllers/characters')
+const { getAllCharacters, getCharcterById, getCharactersTechniques } = require('../controllers/characters')
 
 
 chai.use(sinonChai)
@@ -86,6 +86,33 @@ let sandbox
       expect(stubbedFindOne).to.have.been.calledWith({ where: { id: 'throw-error' } })
       expect(stubbedStatus).to.have.been.calledWith(500)
       expect(stubbedStatusSend).to.have.been.calledWith('unable to retrieve character, please try again')
+    })
+  })
+
+  describe('getCharctersTechniques', () => {
+    // eslint-disable-next-line max-len
+    it('retrieves the character and technique associated with the provided id from the DB and calls response.send with it', async () => {
+      stubbedFindOne.returns(singleCharacterTechnique)
+      const request = { params: { id: 1 } }
+
+      await getCharactersTechniques(request, response)
+
+      expect(stubbedFindOne).to.have.been.calledWith({ where: { id: 1 }, include: { model: models.Techniques} })
+      expect(stubbedSend).to.have.been.calledWith(singleCharacterTechnique)
+    })
+
+    it('returns a 500 with an error message when the database call throws an error', async () => {
+      stubbedFindOne.throws('ERROR!')
+      const request = { params: { id: 'throw-error' } }
+
+      await getCharactersTechniques(request, response)
+
+      expect(stubbedFindOne).to.have.been.calledWith({
+        where: {id: 'throw-error'},
+        include: { model: models.Techniques}
+      })
+      expect(stubbedStatus).to.have.been.calledWith(500)
+      expect(stubbedStatusSend).to.have.been.calledWith('unable to retrieve characters technique, please try again')
     })
   })
 

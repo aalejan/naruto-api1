@@ -20,4 +20,23 @@ const singleCharacter = {
     villageId: 1
 }
 
-module.exports = { charactersList, singleCharacter }
+const singleCharacterTechnique = {
+    id: 1,
+    name: "Naruto Uzumaki",
+    villageId: 1,
+    createdAt: "2020-12-20T04:00:38.000Z",
+    updatedAt: "2020-12-20T04:00:38.000Z",
+    deletedAt: null,
+    techniques: [
+    {
+    id: 1,
+    name: "Multi-Shadow Clone Jutsu",
+    characterId: 1,
+    createdAt: "2020-12-20T04:00:38.000Z",
+    updatedAt: "2020-12-20T04:00:38.000Z",
+    deletedAt: null
+    }
+    ]
+    }
+
+module.exports = { charactersList, singleCharacter, singleCharacterTechnique }

@@ -36,7 +36,7 @@ const getCharactersTechniques = async( req, res, next) => {
     ? res.send(character)
     : next()
   } catch (error){
-    return res.status(500).send('unable to retrieve character, please try again')
+    return res.status(500).send('unable to retrieve characters technique, please try again')
   }
 
   
