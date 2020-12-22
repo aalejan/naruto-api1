@@ -56,15 +56,15 @@ const getCharactersPowerstats = async( req, res, next) => {
 }
 
 const saveNewCharacter = async (req, res) => {
-  const { id, name, villageId } = req.body
+  const { name, villageId } = req.body
 try{
 
-  if(!id || !name || !villageId){
-    return res.status(400).send('The following fields are required: id, name, villageId')
+  if( !name || !villageId){
+    return res.status(400).send('The following fields are required: name, villageId')
   }
  
 
-  const newCharacter = await models.Characters.create({ id, name , villageId})
+  const newCharacter = await models.Characters.create({ name , villageId})
 
   return res.status(201).send(newCharacter)
   }catch(error) {

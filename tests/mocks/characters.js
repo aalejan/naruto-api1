@@ -39,4 +39,18 @@ const singleCharacterTechnique = {
     ]
     }
 
-module.exports = { charactersList, singleCharacter, singleCharacterTechnique }
+const createCharacter = {
+    name: 'Naruto Uzumaki',
+    villageId: 1
+}
+
+const createCharacterResponse = {
+    id: 1,
+    name: "Naruto Uzumaki",
+    villageId: 1,
+    createdAt: "2020-12-20T04:00:38.000Z",
+    updatedAt: "2020-12-20T04:00:38.000Z",
+    deletedAt: null,
+}
+
+module.exports = { charactersList, singleCharacter, singleCharacterTechnique, createCharacter, createCharacterResponse }

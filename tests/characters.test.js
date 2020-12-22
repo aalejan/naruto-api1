@@ -4,11 +4,11 @@ const { createSandbox } = require('sinon')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 const models = require('../models')
-const { charactersList, singleCharacter, singleCharacterTechnique } = require('./mocks/characters')
+const { charactersList, singleCharacter, singleCharacterTechnique, createCharacter, createCharacterResponse } = require('./mocks/characters')
 const {
     describe, it, before, afterEach, beforeEach, after
   } = require('mocha')
-const { getAllCharacters, getCharcterById, getCharactersTechniques } = require('../controllers/characters')
+const { getAllCharacters, getCharcterById, getCharactersTechniques, saveNewCharacter } = require('../controllers/characters')
 
 
 chai.use(sinonChai)
@@ -113,6 +113,39 @@ let sandbox
       })
       expect(stubbedStatus).to.have.been.calledWith(500)
       expect(stubbedStatusSend).to.have.been.calledWith('unable to retrieve characters technique, please try again')
+    })
+  })
+  describe('saveNewCharacter', () => {
+    // eslint-disable-next-line max-len
+    it('accepts new character and saves them as a new character, returning the saved record with a 201 status', async () => {
+      const request = { body: createCharacter }
+
+      stubbedCreate.returns(createCharacterResponse)
+
+      await saveNewCharacter(request, response)
+
+      expect(stubbedCreate).to.have.been.calledWith(createCharacter)
+      expect(stubbedStatus).to.have.been.calledWith(201)
+      expect(stubbedStatusSend).to.have.been.calledWith(createCharacterResponse)
+    })
+    it('sends 400 status and error message when required data is not given', async () => {
+      const request = { body: {  name: createCharacterResponse.name, villageId: createCharacterResponse.villageId } }
+
+      await saveNewCharacter(request, response)
+
+      expect(stubbedCreate).to.have.callCount(0)
+      expect(stubbedStatus).to.have.been.calledWith(400)
+      expect(stubbedStatusSend).to.have.been.calledWith('The following fields are required: id, name, villageId')
+    })
+    it('sends 500 status when server is unable to fulfil request', async () => {
+      stubbedCreate.throws('error')
+      const request = { body: createCharacter }
+
+      await saveNewCharacter(request, response)
+
+      expect(stubbedCreate).to.have.been.calledWith(createCharacter)
+      expect(stubbedStatus).to.have.been.calledWith(500)
+      expect(stubbedStatusSend).to.have.been.calledWith('unable to create character, please try again')
     })
   })
 
