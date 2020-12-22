@@ -5,6 +5,7 @@ const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 const models = require('../models')
 const { charactersList, singleCharacter, singleCharacterTechnique, createCharacter, createCharacterResponse, singleCharacterPowerstats } = require('./mocks/characters')
+const { villagesCharacters } = require('./mocks/villages')
 const {
     describe, it, before, afterEach, beforeEach, after
   } = require('mocha')
@@ -174,6 +175,16 @@ let sandbox
       expect(stubbedStatusSend).to.have.been.calledWith('unable to retrieve characters powerstats, please try again')
     })
   })
+  describe('getCharacterVillage', () => {
+    it('retrieves a list of characters from the database and calls response.send() with the list',  async () => {
+      stubbedFindAll.returns(villagesCharacters)
+
+      await getAllCharacters({}, response)
+
+      expect(stubbedFindAll).to.have.callCount(1)
+      expect(stubbedSend).to.have.been.calledWith(villagesCharacters)
+    })
+})
     
 
 })
