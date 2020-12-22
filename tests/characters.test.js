@@ -4,11 +4,11 @@ const { createSandbox } = require('sinon')
 const sinon = require('sinon')
 const sinonChai = require('sinon-chai')
 const models = require('../models')
-const { charactersList, singleCharacter, singleCharacterTechnique, createCharacter, createCharacterResponse } = require('./mocks/characters')
+const { charactersList, singleCharacter, singleCharacterTechnique, createCharacter, createCharacterResponse, singleCharacterPowerstats } = require('./mocks/characters')
 const {
     describe, it, before, afterEach, beforeEach, after
   } = require('mocha')
-const { getAllCharacters, getCharcterById, getCharactersTechniques, saveNewCharacter } = require('../controllers/characters')
+const { getAllCharacters, getCharcterById, getCharactersTechniques, saveNewCharacter, getCharactersPowerstats } = require('../controllers/characters')
 
 
 chai.use(sinonChai)
@@ -148,5 +148,32 @@ let sandbox
       expect(stubbedStatusSend).to.have.been.calledWith('unable to create character, please try again')
     })
   })
+  describe('getCharctersPowerstats', () => {
+    // eslint-disable-next-line max-len
+    it('retrieves the character and powerstats associated with the provided id from the DB and calls response.send with it', async () => {
+      stubbedFindOne.returns(singleCharacterPowerstats)
+      const request = { params: { id: 1 } }
+
+      await getCharactersPowerstats(request, response)
+
+      expect(stubbedFindOne).to.have.been.calledWith({ where: { id: 1 }, include: { model: models.Powerstats} })
+      expect(stubbedSend).to.have.been.calledWith(singleCharacterPowerstats)
+    })
+
+    it('returns a 500 with an error message when the database call throws an error', async () => {
+      stubbedFindOne.throws('ERROR!')
+      const request = { params: { id: 'throw-error' } }
+
+      await getCharactersPowerstats(request, response)
+
+      expect(stubbedFindOne).to.have.been.calledWith({
+        where: {id: 'throw-error'},
+        include: { model: models.Powerstats}
+      })
+      expect(stubbedStatus).to.have.been.calledWith(500)
+      expect(stubbedStatusSend).to.have.been.calledWith('unable to retrieve characters powerstats, please try again')
+    })
+  })
+    
 
 })

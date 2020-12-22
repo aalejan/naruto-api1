@@ -43,6 +43,8 @@ const getCharactersTechniques = async( req, res, next) => {
 }
 
 const getCharactersPowerstats = async( req, res, next) => {
+  try{
+  
   const { id } = req.params
 
   const character = await models.Characters.findOne({
@@ -53,6 +55,9 @@ const getCharactersPowerstats = async( req, res, next) => {
   return character
     ? res.send(character)
     : next()
+  }  catch(error) {
+    return res.status(500).send('unable to retrieve characters powerstats, please try again')
+  }
 }
 
 const saveNewCharacter = async (req, res) => {

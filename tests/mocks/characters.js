@@ -35,9 +35,27 @@ const singleCharacterTechnique = {
     createdAt: "2020-12-20T04:00:38.000Z",
     updatedAt: "2020-12-20T04:00:38.000Z",
     deletedAt: null
-    }
-    ]
-    }
+    }]
+}
+
+const singleCharacterPowerstats = {
+    id: 1,
+    name: "Naruto Uzumaki",
+    villageId: 1,
+    createdAt: "2020-12-20T04:00:38.000Z",
+    updatedAt: "2020-12-20T04:00:38.000Z",
+    deletedAt: null,
+    powerstats: [
+    {
+    id: 1,
+    attackPotency: "Universe Level+",
+    speed: "Massively Faster Than Light",
+    characterId: 1,
+    createdAt: "2020-12-20T04:00:38.000Z",
+    updatedAt: "2020-12-20T04:00:38.000Z",
+    deletedAt: null
+    }]
+}
 
 const createCharacter = {
     name: 'Naruto Uzumaki',
@@ -53,4 +71,4 @@ const createCharacterResponse = {
     deletedAt: null,
 }
 
-module.exports = { charactersList, singleCharacter, singleCharacterTechnique, createCharacter, createCharacterResponse }
+module.exports = { charactersList, singleCharacter, singleCharacterTechnique, createCharacter, createCharacterResponse, singleCharacterPowerstats }
