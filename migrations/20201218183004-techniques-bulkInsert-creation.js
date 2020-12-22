@@ -107,7 +107,7 @@ module.exports = {
       {
         id: 20,
         name: 'Reanimation Jutsu',
-        characterId: 19
+        characterId: 20
       }
     ])
   },
