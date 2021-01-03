@@ -1,4 +1,7 @@
 Create DATABASE naruto;
+CREATE USER 'naruto'@'localhost' IDENTIFIED WITH mysql_native_password BY 'narutofan$';
+
+GRANT ALL ON novels.* TO 'naruto'@'localhost';
 
 USE naruto;
 
