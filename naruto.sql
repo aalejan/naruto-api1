@@ -22,7 +22,6 @@ CREATE TABLE villages(
     createdAt DATETIME DEFAULT NOW(),
     updatedAt DATETIME DEFAULT NOW() ON UPDATE NOW(),
     PRIMARY KEY(id),
-    FOREIGN KEY(characterId) REFERENCES characters(id)
 )
 
 CREATE TABLE techniques(
