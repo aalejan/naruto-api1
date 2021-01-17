@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        link(rel="stylesheet", href="styles.css")
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Naruto API
+    body
+    a(id='top')
+    div(class= 'sidebar') 
+        h1(class = 'sidebar-header') 
+            a(href="#top") ßNaruto API
+        div(class= 'sidebar-nav')
+            a(href="#references-title") API References
+    div(class= 'banner')
+        div(class= 'top-container')
+            h1(class = 'title')  Naruto API
+            div(class= 'title-caption') Get  your  favorite  Naruto  character,  and  find  out  their  skills  with  an API!
+    div(class= 'main-content')
+        h1(id = 'references-title') API References
+        table(class='api-table')
+            tr
+                th Reference
+                th Method
+                th Purpose
+            tr
+                td /characters  
+                td GET
+                td Return JSON of all characters
+            tr
+                td /characters/id
+                td GET
+                td Return JSON of charcter by id
+            tr
+                td /characters/id/techniques
+                td GET
+                td Return JSON of notable techniques of given character
+            tr
+                td /villages/id
+                td GET
+                td Return JSON of characters that belong to given village
+            tr
+                td /characters/id/powerstats
+                td GET
+                td Return JSON of powerstats of given character
+            tr
+                td /characters
+                td POST
+                td Creates a new character and adds the character to the characters list
+            
+            
+        

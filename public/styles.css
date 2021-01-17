@@ -1,0 +1,112 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 7rem;
+  font-family: 'ninja-naruto';
+  padding-top: 150px;
+}
+
+.top-container {
+  margin-left: 0px;
+  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+}
+
+.title-caption {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  padding-bottom: 20px;
+}
+
+.banner {
+  margin-left: 250px;
+  padding: 1px 16px;
+  margin-top: 0px;
+  background-color: RGB(255, 225, 130);
+}
+
+/* The side navigation menu */
+.sidebar {
+  padding-left: 0;
+  padding-right: 0;
+  width: 280px;
+  padding-top: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 9;
+  background-color: RGB(238, 116, 65);
+  border-right: 1px solid black;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Links on mouse-over */
+.sidebar a:hover:not(.active) {
+  color: white;
+}
+
+.sidebar-header {
+  text-align: center;
+  font-family: 'ninja-naruto';
+  font-size: 2rem;
+}
+
+.sidebar-nav {
+  margin-top: 3rem;
+  text-align: center;
+  font-family: 'ninja-naruto';
+}
+.main-content {
+  margin-left: 330px;
+  padding: 1px 16px;
+  margin-top: 0px;
+  padding-left: 6rem;
+  margin-right: 40px;
+}
+
+#references-title {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 400;
+}
+
+.api-table,
+th,
+tr,
+td {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 20px;
+}
+
+td,
+th {
+  padding: 10px;
+  padding-right: 40px;
+}
+
+.api-table {
+  margin-bottom: 50px;
+}
