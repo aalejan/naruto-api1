@@ -5,8 +5,8 @@ const TechniquesModel = require('./techniques')
 const PowerstatsModel = require('./powerstats')
 
 
-const connection = new Sequelize('naruto', 'naruto', 'narutofan$', {
-  host: 'localhost', dialect: 'mysql'
+const connection = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+  host: 'us-cdbr-east-04.cleardb.com', dialect: 'mysql'
 })
 
 
